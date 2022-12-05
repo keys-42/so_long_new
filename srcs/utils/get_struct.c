@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:25:16 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 04:17:00 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 05:36:03 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ void	ft_new_maps(t_maps **maps)
 	(*maps)->exit_j = -1;
 	(*maps)->collection_num = -1;
 	(*maps)->flag = 0;
+}
+
+void	ft_new_data(t_data **data, t_maps **maps)
+{
+	*data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		ft_free_maps(maps, 1);
+	(*data)->maps = *maps;
 }

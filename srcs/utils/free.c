@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:45:09 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 04:09:32 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 05:37:47 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,18 @@ void	ft_free_maps(t_maps **maps, int flag)
 	{
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	ft_free_data(t_data **data,int flag)
+{
+	if(*data)
+	{
+		ft_free_maps(&(*data)->maps,flag);
+		free(*data);
+	}
+	if(flag == 1)
+	{
+		exit(EXIT_FAILURE);
+	}
+
 }

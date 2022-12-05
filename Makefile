@@ -31,7 +31,8 @@ SRCS		= 	srcs/main.c					\
 				srcs/utils/get_struct.c 	\
 				srcs/utils/free.c 			\
 				srcs/utils/utils.c 			\
-				srcs/make/make_map.c
+				srcs/make/make_map.c		\
+				srcs/mlx/ft_mlx.c
 
 
 OBJDIR   = obj
