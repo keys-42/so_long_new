@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:45:09 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 03:54:49 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:09:32 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	ft_free_maps(t_maps **maps, int flag)
 	{
 		if ((*maps)->map)
 			ft_free_map((*maps)->map);
-		// if ((*maps)->dfs_flag)
-		// 	ft_free_map((*maps)->dfs_flag);
+		if ((*maps)->dfs_flag)
+			ft_free_map((*maps)->dfs_flag);
 		if ((*maps)->fd)
 			close((*maps)->fd);
 		free(*maps);

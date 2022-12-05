@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:42:53 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 03:54:59 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:10:07 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,9 @@ void	ft_check_can_goal(t_maps **maps)
 	(*maps)->collection_num = 0;
 	VertSearch((*maps)->player_i, (*maps)->player_j, (*maps)->dfs_flag, flag,
 			maps);
-	printf("num =%d;flag= %d\n,\n", (*maps)->collection_num, *flag);
-	if (*flag == 0 || (*maps)->collection_num < 0)
+	if (*flag == 0 || (*maps)->collection_num <= 0)
 	{
-		printf("no\n");
+		printf("no_goal\n");
 		free(flag);
 		ft_free_maps(maps, 1);
 	}
