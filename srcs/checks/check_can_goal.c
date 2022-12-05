@@ -6,17 +6,17 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:42:53 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 04:10:07 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:20:54 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	ft_check_space(int i, int j, char **map, t_maps **maps, int *flag)
+static bool	ft_check_space(int i, int j, char **map, t_maps **maps)
 {
 	if (map[i][j] == 'E')
 	{
-		*flag = 1;
+		(*maps)->flag = 1;
 		return (true);
 	}
 	if (map[i][j] == '0')
@@ -29,17 +29,17 @@ static bool	ft_check_space(int i, int j, char **map, t_maps **maps, int *flag)
 	return (false);
 }
 
-static void	VertSearch(int i, int j, char **map, int *flag, t_maps **maps)
+static void	ft_goal_search(int i, int j, char **map, t_maps **maps)
 {
 	map[i][j] = '!';
-	if (ft_check_space(i, j - 1, map, maps, flag))
-		VertSearch(i, j - 1, map, flag, maps);
-	if (ft_check_space(i - 1, j, map, maps, flag))
-		VertSearch(i - 1, j, map, flag, maps);
-	if (ft_check_space(i, j + 1, map, maps, flag))
-		VertSearch(i, j + 1, map, flag, maps);
-	if (ft_check_space(i + 1, j, map, maps, flag))
-		VertSearch(i + 1, j, map, flag, maps);
+	if (ft_check_space(i, j - 1, map, maps))
+		ft_goal_search(i, j - 1, map, maps);
+	if (ft_check_space(i - 1, j, map, maps))
+		ft_goal_search(i - 1, j, map, maps);
+	if (ft_check_space(i, j + 1, map, maps))
+		ft_goal_search(i, j + 1, map, maps);
+	if (ft_check_space(i + 1, j, map, maps))
+		ft_goal_search(i + 1, j, map, maps);
 }
 
 void	ft_map_copy(t_maps **maps, char **flag)
@@ -75,21 +75,17 @@ void	ft_dfs_flag_ptr(t_maps **maps)
 
 void	ft_check_can_goal(t_maps **maps)
 {
-	int	*flag;
+	int	i;
+	int	j;
 
+	i = (*maps)->player_i;
+	j = (*maps)->player_j;
 	ft_dfs_flag_ptr(maps);
-	flag = (int *)malloc(sizeof(int));
-	if (!flag)
-		ft_free_maps(maps, 1);
-	*flag = 0;
 	(*maps)->collection_num = 0;
-	VertSearch((*maps)->player_i, (*maps)->player_j, (*maps)->dfs_flag, flag,
-			maps);
-	if (*flag == 0 || (*maps)->collection_num <= 0)
+	ft_goal_search(i, j, (*maps)->dfs_flag, maps);
+	if ((*maps)->flag == 0 || (*maps)->collection_num <= 0)
 	{
 		printf("no_goal\n");
-		free(flag);
 		ft_free_maps(maps, 1);
 	}
-	free(flag);
 }

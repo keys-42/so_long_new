@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 02:04:11 by keys              #+#    #+#             */
-/*   Updated: 2022/12/05 20:21:18 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:16:25 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_maps
 	char	**map;
 	char	**dfs_flag;
 	int		fd;
-	// int		map_position;
 	int		hight;
 	int		width;
 	int		wall_head;
@@ -35,6 +34,7 @@ typedef struct s_maps
 	int		exit_i;
 	int		exit_j;
 	int		collection_num;
+	int		flag;
 }			t_maps;
 
 void		ft_check(int argc, char **argv, t_maps **maps);
