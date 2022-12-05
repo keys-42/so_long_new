@@ -13,6 +13,12 @@ FTDIR		=	libft
 FTNAME		=	$(FTDIR)/libft.a
 FT			=	$(FTNAME)
 
+MLXDIR		=	minilibx-linux
+MLXNAME		= $(MLXDIR)/libmlx_Linux.a
+MLX			=	$(MLXNAME)
+MLX_FLAGS_LINUX	=	-L$(MLXDIR) -lmlx -lXext -lX11
+
+
 SRCS		= 	srcs/main.c					\
 				srcs/checks/check.c			\
 				srcs/checks/check_wall.c	\
@@ -34,8 +40,11 @@ OBJS  = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJS) $(GNL) $(FT)
-		$(CC) $(INCLUDE) -o $(NAME) $^ $(CFLAGS)
+$(NAME):$(OBJS) $(GNL) $(FT) $(MLX)
+		$(CC) $(INCLUDE) -o $(NAME) $^ $(CFLAGS) $(MLX_FLAG_LINUX)
+
+$(MLX):
+		$(MAKE) --no-print-directory -C $(MLXDIR)
 
 $(GNL):
 		$(MAKE) --no-print-directory -C $(GNLDIR)
@@ -50,11 +59,13 @@ $(OBJDIR)/%.o: %.c
 
 
 clean:
+		$(MAKE) --no-print-directory clean -C $(MLXDIR)
 		$(MAKE) --no-print-directory clean -C $(GNLDIR)
 		$(MAKE) --no-print-directory clean -C $(FTDIR)
 		$(RM) -r $(OBJDIR)
 
 fclean: clean
+		$(MAKE) --no-print-directory fclean -C $(MLXDIR)
 		$(MAKE) --no-print-directory fclean -C $(GNLDIR)
 		$(MAKE) --no-print-directory fclean -C $(FTDIR)
 		$(RM) $(NAME)

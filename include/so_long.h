@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 02:04:11 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 04:16:25 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:35:08 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct s_maps
 	int		collection_num;
 	int		flag;
 }			t_maps;
+
+typedef	struct s_data
+{
+	t_maps	*maps;
+
+}t_data;
+
 
 void		ft_check(int argc, char **argv, t_maps **maps);
 void		ft_new_maps(t_maps **maps);

@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:32:03 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 04:11:54 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 04:24:50 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ void	ft_check(int argc, char **argv, t_maps **maps)
 		ft_check_collectible(maps);
 		ft_useless_characters(maps);
 		ft_check_can_goal(maps);
-		ft_free_maps(maps, 1);
 	}
 }
