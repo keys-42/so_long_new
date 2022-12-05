@@ -21,7 +21,7 @@ SRCS		= 	srcs/main.c					\
 				srcs/checks/check_exit.c	\
 				srcs/checks/check_collectible.c	\
 				srcs/checks/check_useless_characters.c	\
-				srcs/checks/check_can_finish.c	\
+				srcs/checks/check_can_goal.c	\
 				srcs/utils/get_struct.c 	\
 				srcs/utils/free.c 			\
 				srcs/utils/utils.c 			\

@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:45:09 by keys              #+#    #+#             */
-/*   Updated: 2022/12/05 20:14:12 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/06 03:54:49 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	ft_free_maps(t_maps **maps, int flag)
 		free(*maps);
 	}
 	if (flag == 1)
+	{
 		exit(EXIT_FAILURE);
+	}
 }
