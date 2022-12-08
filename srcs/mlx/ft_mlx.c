@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 05:29:50 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 15:57:00 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 17:10:05 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ static void	mlx_image_init(t_data **data)
 													&hight,
 													&width);
 	(*data)->player_image = mlx_xpm_file_to_image((*data)->mlx,
-													"./images/lucas-_3__3.xpm",
+													"./images/sanji.xpm",
 													&hight,
 													&width);
 	(*data)->collection_image = mlx_xpm_file_to_image((*data)->mlx,
-														"./images/ball-_1_.xpm",
+														"./images/chopper.xpm",
 														&hight,
 														&width);
 	(*data)->exit_image = mlx_xpm_file_to_image((*data)->mlx,
-												"./images/exit1.xpm",
+												"./images/nami.xpm",
 												&hight,
 												&width);
 }
@@ -66,21 +66,24 @@ static void	put_inside_map_utils(t_data **data, const char c, int i, int j)
 
 static int	put_inside_map(t_data **data)
 {
+	int	head;
+	int	tail;
 	int	i;
-	int	j;
+	int j;
 
-	i = 0;
-	while ((*data)->maps->map[i])
+	j = 0;
+	head = (*data)->maps->wall_head;
+	tail = (*data)->maps->wall_tail;
+	while (head <= tail)
 	{
-		j = 0;
-		while ((*data)->maps->map[i][j])
+		i=0;
+		while ((*data)->maps->map[head][i])
 		{
-			put_inside_map_utils(data, (*data)->maps->map[i][j], i, j);
-			if ((*data)->maps->map[i][j] == '\n')
-				break ;
-			j++;
+			put_inside_map_utils(data, (*data)->maps->map[head][i], i,j);
+			i++;
 		}
-		i++;
+		head++;
+		j++;
 	}
 	return (0);
 }
@@ -91,7 +94,7 @@ void	ft_mlx_make(t_data **data)
 	if (!(*data)->mlx)
 		ft_free_data(data, 1);
 	(*data)->mlx_win = mlx_new_window((*data)->mlx, WINDOWSIZE
-			* ((*data)->maps->hight), WINDOWSIZE * ((*data)->maps->width),
+			* ((*data)->maps->width), WINDOWSIZE * ((*data)->maps->hight),
 			"so_long");
 	mlx_image_init(data);
 	mlx_loop_hook((*data)->mlx, put_inside_map, data);

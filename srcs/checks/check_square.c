@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:45:05 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 14:50:21 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 16:49:52 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	ft_check_square(t_maps **maps)
 		}
 		head++;
 	}
-	(*maps)->width = (int)len1 -1;
+	(*maps)->width = (int)len1;
 	(*maps)->hight = (*maps)->wall_tail - (*maps)->wall_head + 1;
 }
