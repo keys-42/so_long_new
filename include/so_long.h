@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 02:04:11 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 16:11:44 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 18:14:05 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # define PIXEL_HIGTH 1980
 # define PIXEL_WIDTH 1080
 # define WINDOWSIZE 50
+//shift
+#define ESC_KEY 65307
+#define UP_KEY 119
+#define DOWN_KEY 115
+#define LEFT_KEY 97
+#define RIGHT_KEY 100
+
 typedef struct s_maps
 {
 	char	**map;
