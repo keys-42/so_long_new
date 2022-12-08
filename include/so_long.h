@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 02:04:11 by keys              #+#    #+#             */
-/*   Updated: 2022/12/06 05:38:51 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 15:55:22 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <mlx.h>
+// # include <minilibx-linux/mlx.h>
 # include <sys/stat.h>
 # include <sys/types.h>
 
+# define PIXEL_HIGTH 1980
+# define PIXEL_WIDTH 1080
+# define WINDOWSIZE 50
 typedef struct s_maps
 {
 	char	**map;
@@ -41,6 +45,12 @@ typedef struct s_data
 {
 	t_maps	*maps;
 	void	*mlx;
+	void	*mlx_win;
+	void	*wall_image;
+	void	*space_image;
+	void	*player_image;
+	void	*collection_image;
+	void	*exit_image;
 
 }			t_data;
 
@@ -58,6 +68,6 @@ void		ft_useless_characters(t_maps **maps);
 void		ft_check_can_goal(t_maps **maps);
 void		ft_new_data(t_data **data, t_maps **maps);
 void		ft_free_data(t_data **data, int flag);
-void		ft_mlx(t_data **data);
+void		ft_mlx_make(t_data **data);
 
 #endif

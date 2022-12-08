@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:22:17 by keys              #+#    #+#             */
-/*   Updated: 2022/12/05 19:31:30 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 14:52:47 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_exit_position(char *line, t_maps **maps, int *flag)
 	i = 0;
 	while (1)
 	{
-		if (line[i] == '\0')
+		if (!line[i])
 			break ;
 		else
 		{
@@ -51,9 +51,7 @@ void	ft_check_exit(t_maps **maps)
 	while (head <= tail)
 	{
 		if (flag == 0)
-		{
 			(*maps)->exit_i = head;
-		}
 		num += ft_exit_position((*maps)->map[head], maps, &flag);
 		head++;
 	}

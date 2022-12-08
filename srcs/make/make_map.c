@@ -6,13 +6,25 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:42:25 by keys              #+#    #+#             */
-/*   Updated: 2022/12/05 17:48:28 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 14:39:16 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static	void	ft_get_map(t_maps **maps, int i)
+static char	*ft_get_new_line(char *line)
+{
+	size_t	len;
+	char	*new_line;
+
+	len = ft_strlen(line);
+	if (line[len - 1] == '\n')
+		new_line = ft_substr(line, 0, len - 1);
+	free(line);
+	return (new_line);
+}
+
+static void	ft_get_map(t_maps **maps, int i)
 {
 	char	*line;
 
@@ -28,6 +40,7 @@ static	void	ft_get_map(t_maps **maps, int i)
 	else
 	{
 		ft_get_map(maps, i + 1);
+		line = ft_get_new_line(line);
 		(*maps)->map[i] = line;
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:36:38 by keys              #+#    #+#             */
-/*   Updated: 2022/12/05 19:40:33 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 14:53:48 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_collectible_check(char *line)
 	i = 1;
 	while (1)
 	{
-		if (line[i + 1] == '\n')
+		if (!line[i])
 			break ;
 		else
 		{

@@ -1,6 +1,7 @@
 NAME 		=	so_long
 CC			=	cc
 # CC			=	clang
+# CFLAGS		= -g -fsanitize=address -fsanitize=undefined
 CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined
 # CFLAGS		=	-Wall -Wextra -Werror
 INCLUDE		=	-I ./include/
@@ -28,12 +29,11 @@ SRCS		= 	srcs/main.c					\
 				srcs/checks/check_collectible.c	\
 				srcs/checks/check_useless_characters.c	\
 				srcs/checks/check_can_goal.c	\
+				srcs/make/make_map.c		\
 				srcs/utils/get_struct.c 	\
 				srcs/utils/free.c 			\
-				srcs/utils/utils.c 			\
-				srcs/make/make_map.c		\
+				srcs/utils/utils.c			\
 				srcs/mlx/ft_mlx.c
-
 
 OBJDIR   = obj
 OBJS  = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -42,10 +42,10 @@ OBJS  = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 all: $(NAME)
 
 $(NAME):$(OBJS) $(GNL) $(FT) $(MLX)
-		$(CC) $(INCLUDE) -o $(NAME) $^ $(CFLAGS) $(MLX_FLAG_LINUX)
+		$(CC) $^ $(CFLAGS) $(MLX_FLAGS_LINUX) -o $@
 
 $(MLX):
-		$(MAKE) --no-print-directory -C $(MLXDIR)
+		$(MAKE) -C $(MLXDIR)
 
 $(GNL):
 		$(MAKE) --no-print-directory -C $(GNLDIR)
@@ -60,13 +60,13 @@ $(OBJDIR)/%.o: %.c
 
 
 clean:
-		$(MAKE) --no-print-directory clean -C $(MLXDIR)
+		$(MAKE) clean -C $(MLXDIR)
 		$(MAKE) --no-print-directory clean -C $(GNLDIR)
 		$(MAKE) --no-print-directory clean -C $(FTDIR)
 		$(RM) -r $(OBJDIR)
 
 fclean: clean
-		$(MAKE) --no-print-directory fclean -C $(MLXDIR)
+		$(MAKE) clean -C $(MLXDIR)
 		$(MAKE) --no-print-directory fclean -C $(GNLDIR)
 		$(MAKE) --no-print-directory fclean -C $(FTDIR)
 		$(RM) $(NAME)
@@ -74,4 +74,4 @@ fclean: clean
 re : fclean all
 
 .PHONY:
-		all clean fclean re gnl libft
+		all clean fclean re
