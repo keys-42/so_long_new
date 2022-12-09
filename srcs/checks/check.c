@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:32:03 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 14:58:12 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 20:40:51 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,23 @@ void	ft_check(int argc, char **argv, t_maps **maps)
 	{
 		ft_filename_check(argv[1], maps);
 		ft_make_map(argv[1], maps);
+			int i = 0;
+int j;
+while((*maps)->map[i])
+{
+	j = 0;
+	while((*maps)->map[i][j])
+	{
+		printf("%c",(*maps)->map[i][j]);
+		j++;
+	}
+printf("\n");
+	i++;
+}
+printf("\n");
 		ft_check_wall(maps);
+
+	fflush(stdout);
 		ft_check_square(maps);
 		ft_check_player(maps);
 		ft_check_exit(maps);

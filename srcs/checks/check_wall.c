@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:56:49 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 14:47:13 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 20:41:08 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_check_wall(t_maps **maps)
 		else if ((*maps)->map[i + 1] == NULL || (*maps)->map[i + 1][0] == '\n')
 		{
 			ft_upper_lower_wall_check((*maps)->map[i], 2, maps);
+				printf("h=%d;t=%d",(*maps)->wall_head,i);
 			(*maps)->wall_tail = i;
 			return ;
 		}

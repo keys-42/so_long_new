@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:45:05 by keys              #+#    #+#             */
-/*   Updated: 2022/12/08 16:49:52 by keys             ###   ########.fr       */
+/*   Updated: 2022/12/08 20:33:04 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_check_square(t_maps **maps)
 
 	head = (*maps)->wall_head;
 	tail = (*maps)->wall_tail;
+	printf("%d %d",head,tail);
 	if ((tail - head) < 2)
 	{
 		printf("Not_square_tree\n");
